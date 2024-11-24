@@ -1,0 +1,29 @@
+{
+    "scopeName": "source.mermaid",
+    "name": "Mermaid",
+    "fileTypes": ["mmd", "mermaid"],
+    "patterns": [
+        {
+            "name": "keyword.control.mermaid",
+            "match": "\\b(graph|subgraph|end|classDef|class|click|linkStyle|style|title|accTitle|accDescr)\\b"
+        },
+        {
+            "name": "variable.language.mermaid",
+            "match": "\\b(TD|LR|BT|RL|TB)\\b"
+        },
+        {
+            "name": "entity.name.function.mermaid",
+            "match": "\\b[A-Za-z0-9_]+(?=\\s*\\[)"
+        },
+        {
+            "name": "string.quoted.double.mermaid",
+            "begin": "\"",
+            "end": "\""
+        },
+        {
+            "name": "comment.line.double-slash.mermaid",
+            "match": "//.*$"
+        }
+    ],
+    "repository": {}
+}

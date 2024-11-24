@@ -1,0 +1,73 @@
+{
+  "name": "charts---diagrams",
+  "displayName": "Charts & Diagrams",
+  "description": "an extension to create charts and diagrams",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:mermaid"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "mermaid",
+        "aliases": ["Mermaid", "mermaid"],
+        "extensions": [".mmd", ".mermaid"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mermaid",
+        "scopeName": "source.mermaid",
+        "path": "src/syntaxes/mermaid.tmLanguage.json"
+      },
+      {
+        "language": "markdown",
+        "scopeName": "text.html.markdown.mermaid",
+        "path": "./syntaxes/markdown-mermaid.tmLanguage.json",
+        "embeddedLanguages": { "source.mermaid": "mermaid" }
+    }
+    ],
+    "commands": [
+      {
+        "command": "charts---diagrams.startPreview",
+        "title": "Start Charts Preview"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.95.0",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "mermaid": "^11.4.0"
+  }
+}
